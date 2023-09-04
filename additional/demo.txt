@@ -1,0 +1,145 @@
+<script>
+            $('checkbox').onSelect(function() {
+              var arr = [];
+
+              $('input:checked[name=department[]]').each(function() {
+                arr.push($(this).val());
+              });
+
+              $('#my_match').val(arr.join(','));
+              alert($('#my_match').val());
+
+              // Prevent actual submit for demo purposes:
+            
+            });
+          </script>
+
+          <!-- Department -->
+        <div class="row">
+          <div class="col-md-6 mt-md-0 mt-3">
+
+            <label>Department</lable>
+              <div class="multiselect">
+                <div class="selectBox">
+                  <select  id="department" onclick="showCheckboxes()">
+                    <option disabled selected>Select Department</option>
+                  </select>
+                  <div class="overSelect"></div>
+                </div>
+                <form id="form_dept">
+                  <div id="checkboxes">
+                    <?php
+                    require "../connect.php";
+                    $sql = "SELECT * FROM department;";
+                    $result = mysqli_query($conn, $sql);
+                    $out = '';
+                    while ($department = mysqli_fetch_assoc($result)) {
+                      $out .= '<input type="checkbox" name="department" id="' . $department['d_id'] . '" value="' . $department['d_id'] . '">' . $department['name'] . '</label><br>';
+                    }
+                    echo $out;
+                    ?>
+                    <button id="btn">button</button>
+                    <script>
+                      var form = document.getElementById('form_dept');
+                      var values = [];
+                      var checkboxesy = document.getElementsByName('department');
+                     // alert(checkboxesy.length);
+                      //alert(department.length)
+                      for (var i = 0; i < checkboxesy.length; i++) {
+                       // alert(checkboxesy[i].value);
+                        if (getElementsByName('checkboxesy[i]').checked
+                          ) {
+                          alert('hello');
+                          values.push(checkboxesy[i].values);
+                        }
+                      }
+                      alert('the value(s):' + values.length);
+                    </script>
+                </form>
+              </div>
+          </div>
+        </div>
+        <!-- Programmm -->
+        <div class="col-md-6 mt-md-0 mt-3">
+          <label>Programme</lable>
+
+            <div style="padding:10px; font-size:20px" class="dropdown row">
+              <div class="col-12 text-center"></div>
+              <select name="programme" id="programme" onselect="getprogramme(this.value);">
+
+                <option disabled selected>Select programme</option>
+              </select>
+              <br>
+            </div>
+
+        </div>
+
+      </div>
+      <!-- Course -->
+
+      <label>Course</lable>
+        <div class="multiselect">
+          <div class="selectBox">
+            <select name="course" id="course" onclick="showCheckboxes()">
+              <option disabled selected>Select course</option>
+            </select>
+            <div class="overSelect"></div>
+          </div>
+          <div id="checkboxes">
+
+          </div>
+        </div>
+
+        <script type="text/javascript">
+    var expanded = false;
+
+    function showCheckboxes() {
+      var checkboxes = document.getElementById("checkboxes");
+      if (!expanded) {
+        checkboxes.style.display = "block";
+        expanded = true;
+      } else {
+        checkboxes.style.display = "none";
+        expanded = false;
+      }
+    }
+    $(document).ready(function() {
+      $('#department').change(function() {
+        var d_id = $(this).val();
+        // alert (d_id);
+
+        $.ajax({
+
+          type: 'POST',
+          cache: false,
+          url: 'fetch.php',
+          data: {
+            id: d_id
+          },
+          success: function(data) {
+            $('#programme').html(data);
+          }
+        });
+      });
+    });
+
+    $(document).ready(function() {
+      $('#programme').change(function() {
+        var pr_id = $(this).val();
+
+
+        $.ajax({
+
+          type: 'POST',
+          cache: false,
+          url: 'fetchcourse.php',
+          data: {
+            id: pr_id
+          },
+          success: function(data) {
+            $('#checkboxes').html(data);
+          }
+        });
+      });
+    });
+  </script>
