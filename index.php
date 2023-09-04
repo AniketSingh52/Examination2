@@ -22,11 +22,19 @@ $count=mysqli_num_rows($q);
 if($count){
   $userdata=mysqli_fetch_array($q);
   if($userdata['type']==="A"){
-    echo "<script>alert('Login Successful as admin');</script>";
-    echo '<META HTTP-EQUIV="Refresh" Content="2; URL=info-1.php">';
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert" style=" width:100%; position: fixed; top: 0; left: 0; ">
+    <strong>Sucess!</strong> Login Successful as admin.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>';
+    // echo "<script>alert('');</script>";
+    echo '<META HTTP-EQUIV="Refresh" Content="0.5; URL=info-1.php">';
     }else{
-      echo"<script> alert ('Login successful')</script>" ;
-      echo'<META HTTP-EQUIV="Refresh" Content="3;URL=info-1.php">';
+      echo '<div class="alert alert-success alert-dismissible fade show" role="alert" style=" width:100%; position: fixed; top: 0; left: 0; ">
+      <strong>Sucess!</strong> Login Successful.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+      // echo"<script> alert ('Login successful')</script>" ;
+      echo'<META HTTP-EQUIV="Refresh" Content="0.5;URL=info-1.php">';
       }
   }
   else{ 

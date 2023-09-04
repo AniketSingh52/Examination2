@@ -60,7 +60,7 @@ style="   background-image: url('https://mdbootstrap.com/img/new/fluid/nature/01
                 <div class="login">
                     <form>
                         <br>
-                        <div><a href="" class="  text-white btn btn-lg btn-block btn-danger">Feed Time Table</button></a><br>
+                        <div><a href="table/index2.php" class="  text-white btn btn-lg btn-block btn-danger">Feed Time Table</button></a><br>
                         <a href="professor/manageprof.html" class=" btn btn-lg btn-block btn-danger ">Manage Professor Duty</button></a><br>
                       
                         <a href="" class="btn btn-lg btn-block btn-danger ">Allocate duty</button></a><br>
@@ -86,7 +86,7 @@ style="   background-image: url('https://mdbootstrap.com/img/new/fluid/nature/01
                 <div class="login">
                     <form>
                         <br>
-                        <div><a href="" class="  text-white btn btn-lg btn-block btn-danger">Feed Time Table</button></a><br>
+                        <div><a href="table/index2.php" class="  text-white btn btn-lg btn-block btn-danger">Feed Time Table</button></a><br>
                         <a href="professor/manageprof.html" class=" btn btn-lg btn-block btn-danger ">Manage Professor Info</button></a><br>
                       
                         <a href="" class="btn btn-lg btn-block btn-danger ">Allocate duty</button></a><br>

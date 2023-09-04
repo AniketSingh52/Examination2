@@ -2,11 +2,13 @@
 
 require ('../connect.php');
 $id=$_POST['id'];
-$sql="SELECT * FROM professor WHERE d_id = '$id'";
+
+$sql="SELECT p.p_id,p.name FROM professor as p JOIN p_department as d ON d.p_id=p.p_id WHERE d.d_id = '$id'";
+//$sql="SELECT * FROM programme as p JOIN p_department as d ON d.p_id=p.p_id WHERE d.d_id = '$id'";
 $result=mysqli_query($conn,$sql);
-$out .='<option disabled selected value="">Select programme</option>';
+$out .='<option disabled selected value="">Select professor</option>';
 while ($row = mysqli_fetch_array($result)) {
-    $out.='<option value="' . $row['p_id'] . '">'.$row['name'].'</option>';
+    $out.='<option value="' . $row['p.p_id'] . '">'.$row['p.name'].'</option>';
 }
 echo $out;
 ?>
