@@ -86,9 +86,14 @@ echo "
 <th colspan='2' class='text-center'>Actions</th>
 </thead>
 ";
-$sql="select p.name,p.p_id,p.reg_sfc,p.designation,p.type,p.ecm from professor p,department d,programme pr where pr.pr_id='$b' And d.d_id='$a'AND pr.d_id=d.d_id AND p.d_id=d.d_id";
+
+$sql="SELECT p.name,p.reg_sfc,p.designation,p.type,p.ecm FROM professor as p JOIN p_department as pd ON p.p_id=pd.p_id JOIN programme as pr ON pr.d_id=pd.d_id  WHERE pr.d_id=$a AND pr.pr_id=$b";
+
+
 $result=$conn->query($sql);
+//echo 'hello';
 if($result){
+	
 while($row=$result->fetch_assoc()){
  $name=$row['name'];
  $p_id=$row['p_id'];

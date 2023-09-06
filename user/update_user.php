@@ -110,18 +110,16 @@ if (isset($_POST['admin'])) {
   $username = $_SESSION['username'];
   $s = "UPDATE login set type='$type',status='$admin' WHERE username='$username'";
   $qu = $conn->query($s);
-  //echo mysqli_num_rows($qu) . "row selected";
- // echo $username;
 } else {
 
   if (isset($_POST['username'])) {
     $username = $_POST['username'];
     $_SESSION['username'] = $username;
-
-    $sql = "SELECT l.p_id,l.type,l.status,p.name,d.name as department  FROM login as l JOIN professor as p ON l.p_id=p.p_id JOIN department as d ON p.d_id=d.d_id WHERE l.username='$username'";
+   // echo $username;
+    $sql = "SELECT l.p_id,l.type,l.status,p.name,dd.name as department  FROM login as l JOIN professor as p ON l.p_id=p.p_id JOIN p_department as d ON p.p_id=d.p_id JOIN department as dd ON d.d_id=dd.d_id WHERE l.username='$username'";
     $q = $conn->query($sql);
     $count = mysqli_num_rows($q);
- //  echo $count;
+  
     if ($count) {
       $userdata = mysqli_fetch_array($q);
       $p_id = $userdata['p_id'];

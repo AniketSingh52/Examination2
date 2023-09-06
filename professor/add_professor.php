@@ -40,6 +40,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js
       top: 0;
       bottom: 0;
     }
+  
 
     #checkboxes {
       display: none;
@@ -67,9 +68,10 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js
       background-color: white;
       border-radius: 10px;
     }
+    
 
     .wrapper label {
-      display: block;
+      display: inline;
       padding-bottom: 0.2rem;
     }
 
@@ -180,6 +182,7 @@ ORDER BY name ASC
         $result = $resultSet->fetch_all(MYSQLI_ASSOC);
         ?>
         <!-- DEPARTMENT BLOCK -->
+        <div class="a">
         <div class="container">
           <div style="width: 500px; margin:0 auto">
             <div class="form-group">
@@ -193,20 +196,21 @@ ORDER BY name ASC
               </select>
             </div>
             <!-- PROGRAMME BLOCK -->
-            <div class="form-group">
+            <div class="form-group container">
               <label>Select Program(s)</label><br />
               <select id="second_level" name="second_level[]" multiple class="form-control">
 
               </select>
             </div>
             <!-- COURSE BLOCK -->
-            <div class="form-group">
+            <div class="form-group container">
               <label>Select Course(s)</label><br />
               <select id="third_level" name="third_level[]" multiple class="form-control">
 
               </select>
             </div>
           </div>
+        </div>
         </div>
 
         <!-- DESIGNATION BLOCK -->
