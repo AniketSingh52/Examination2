@@ -93,7 +93,6 @@ include('../connect.php');
         </form>
     </div>
 
-<<<<<<< HEAD
     <?php
     if (isset($_POST['professor1'])) {
         $p_id = $_POST['professor1'];
@@ -142,46 +141,6 @@ include('../connect.php');
     }
    
     ?>
-=======
-<?php
-if (isset($_POST['p_id'])) {
-    // Get the submitted values from the form.
-    echo 'hello';
-    $p_id = $_POST['p_id'];
-    $sql = "SELECT * FROM professor where p_id=$p_id";
-    $result = $conn->query($sql);
-    if ($result) {
-        while ($row = $result->fetch_assoc()) {
-            $name = $row['name'];
-        }
-?>
-            <form method="POST" action="" name="form2">
-                <fieldset disabled>
-
-                    <div class="mb-3">
-                        <label for="disabledTextInput" class="form-label">Name : </label>
-                        <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $name ?>">
-                    </div>
-                    <hr class="mx-n3">
-                </fieldset>
-                <div class="mb-3">
-                    <label class="form-label">Reason: </label>
-                    <input type="textarea" id="disabledTextInput" class="form-control" name='reason'>
-                </div>
-
-                <hr class="mx-n3">
-
-                <button type="submit" class="btn btn-lg btn-block btn-primary ">Submit</button>
-
-            </form>
-
-
-<?php
-        }
-    }
-
-?>
->>>>>>> f8a1706f17b4af045cc81d8e0f62025ea177fa21
 </body>
 
 </html>

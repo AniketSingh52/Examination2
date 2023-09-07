@@ -58,9 +58,6 @@
     if (isset($_POST['exam'])) { ?>
         <div class="table-responsive">
             <table border='1' class='table table-hover mx-auto px-auto' id="table">
-
-
-
             <?php
             echo "
             <thead class='thead-dark'>
@@ -76,8 +73,6 @@
             $sql = "SELECT `date`, SUM(nob) as nob FROM timetable  WHERE e_id='$e' and academic_year='$ay' group by date;";
             $result = mysqli_query($conn, $sql);
             $count = mysqli_num_rows($result);
- 
-
             if ($result) {
                 $result1 = $result->fetch_all(MYSQLI_ASSOC);
                
