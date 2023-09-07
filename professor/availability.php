@@ -112,11 +112,11 @@ include('../connect.php');
                         </div>
                         <hr class="mx-n3">
                     </fieldset>
-                    <div class="mb-3" >
+                    <div class="mb-3" style="display:none;">
                             <label  class="form-label">Professor ID: </label>
                             <input type="text" id="p_id" name="p_id" class="form-control" value="<?php echo $p_id ?>" >
                         </div>
-                        <hr class="mx-n3">
+                       
                     
                     <div class="mb-3">
                         <label class="form-label">Reason: </label>
@@ -126,7 +126,7 @@ include('../connect.php');
                     <hr class="mx-n3">
                     
                     <div class="mb-3">
-                        <label class="form-label">Reason: </label>
+                        <label class="form-label">Date: </label>
                         <input type="date" id="date" class="form-control" name="p_date">
                     </div>
 
