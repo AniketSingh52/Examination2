@@ -5,6 +5,8 @@ include('../connect.php');
 
 <html>
 <head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Feed Timetable</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -29,15 +31,17 @@ include('../connect.php');
     });
 
 
-	    // Show dependent ajax
+	   // Show dependent ajax
 		$("#Show").on("click",function(){
       var progId = document.getElementById("programee").value;
 	  var sem=document.getElementById("semester").value;
+	  var year=document.getElementById("year").value;
+	  var type=document.getElementById("examtype").value;
       $.ajax({
         url :"table.php",
         type:"POST",
         cache:false,
-        data:{progid:progId,semid:sem},
+        data:{progid:progId,semid:sem,yearid:year,examid:type},
         success:function(data){
           $("#table").html(data);
         }
@@ -90,7 +94,7 @@ ttime.disabled=!checkbox.checked;
 			<!-- Acedemic Year dropdown -->
 				<label for="yera">Acedemic Year</label>
 				<select class="form-control" id="year" name="year">
-					<option value="">Select Year</option>
+					<option value="" selected disabled>Select Year</option>
 					<?php
 					$year=date('Y');	
 					echo '<option value="'.$year.'">'.$year.' - '.($year+1).'</option>';
@@ -101,7 +105,7 @@ ttime.disabled=!checkbox.checked;
 				<!-- Programme dropdown -->
 				<label for="programee">Programme</label>
 				<select class="form-control" id="programee" name="programee1" require>
-					<option value="">Select Programme</option>
+					<option value="" selected disabled>Select Programme</option>
 					<?php
 					$query = "SELECT * FROM programme";
 					$result = $conn->query($query);
@@ -110,7 +114,7 @@ ttime.disabled=!checkbox.checked;
 							echo '<option value="'.$row['pr_id'].'">'.$row['pr_name'].'</option>';
 						}
 					}else{
-						echo '<option value="">Country not available</option>';
+						echo '<option value="" selected disabled>Programee not available</option>';
 					}
 					?>
 				</select>
@@ -119,14 +123,14 @@ ttime.disabled=!checkbox.checked;
 				<!-- Semester dropdown -->
 				<label for="semester">Semester</label>
 				<select class="form-control" id="semester" name="semester1" require>
-					<option value="">Select Semester</option>
+					<option value="" selected disabled>Select Semester</option>
 				</select>
 		<br/>
 
 		<!-- Exam type dropdown -->
 				<label for="examtype">Exam Type</label>
 				<select class="form-control" id="examtype" name="examtype1">
-					<option value="">Select Type</option>
+					<option value="" selected disabled>Select Type</option>
 					<?php
 					$query = "SELECT * FROM exam";
 					$result = $conn->query($query);
@@ -143,7 +147,7 @@ ttime.disabled=!checkbox.checked;
 						}
 					}
 					}else{
-						echo '<option value="">Country not available</option>';
+						echo '<option value="" selected disabled>Exam type not available</option>';
 					}
 					?>
 				</select>
@@ -160,11 +164,12 @@ ttime.disabled=!checkbox.checked;
 				<input type="checkbox" onchange="toggleSelectAll(this)">
 			</div>
 		</div>
-		<!-- Table-->		
+		<!-- Table-->	
+		<div class="table-responsive">
                 <table border='1' class='table table-hover mx-auto px-auto' id="table">
 				</table>
 
-
+				</div>
 		<!-- Submit button-->
 				<input type="submit" value="Submit" name="Submit" id="Submit" class="btn btn-primary" style="display:none;">
 				</div>
