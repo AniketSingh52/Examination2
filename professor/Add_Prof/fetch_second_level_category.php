@@ -2,7 +2,7 @@
 
 //fetch_second_level_category.php
 
-include('../connect.php');
+include('../../connect.php');
 
 if(isset($_POST["selected"]))
 {

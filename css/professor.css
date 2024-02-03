@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    background: linear-gradient(to right, #292929, #aaaaaa);
+
+
+}
+     * {
+
+font-family: 'Poppins', sans-serif;
+}
+
+.multiselect {
+width: 300px;
+}
+
+.selectBox {
+position: relative;
+}
+
+.selectBox select {
+width: 100%;
+font-weight: bold;
+}
+
+.overSelect {
+position: absolute;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+}
+
+
+#checkboxes {
+display: none;
+border: 1px #dadada solid;
+}
+
+#checkboxes label {
+display: block;
+}
+
+#checkboxes label:hover {
+background-color: #1e90ff;
+}
+
+
+
+.wrapper {
+max-width: 800px;
+margin: 10px auto;
+padding: 30px 45px;
+box-shadow: 5px 25px 35px #3535356b;
+background-color: white;
+border-radius: 10px;
+color:gray;
+}
+.wrapper label {
+display: inline;
+padding-bottom: 0.2rem;
+}
+.wrapper .form .row {
+padding: 0.6rem 0;
+}
+.wrapper .form .option {
+position: relative;
+padding-left: 20px;
+cursor: pointer;
+}
+.wrapper .form .option input {
+opacity: 0;
+}
+.wrapper .form .checkmark {
+position: absolute;
+top: 1px;
+left: 0;
+height: 20px;
+width: 20px;
+border: 1px solid #bbb;
+border-radius: 50%;
+}
+.wrapper .form .option .checkmark:after {
+content: "";
+width: 10px;
+height: 10px;
+display: block;
+background: black;
+position: absolute;
+top: 50%;
+left: 50%;
+border-radius: 50%;
+transform: translate(-50%, -50%) scale(0);
+transition: 300ms ease-in-out 0s;
+}
+
+.wrapper .form .option input[type="radio"]:checked~.checkmark {
+background: #fff;
+transition: 300ms ease-in-out 0s;
+}
+
+.wrapper .form .option input[type="radio"]:checked~.checkmark:after {
+background: black;   
+transform: translate(-50%, -50%) scale(1);
+
+}
+.frmm{
+
+  
+    margin:20px auto;
+    padding: 30px 45px;
+    box-shadow: 5px 25px 35px #3535356b;
+    background-color: white;
+    border-radius: 10px;
+  margin-top: 120px;
+  font-size:18px;
+  font-weight:200;
+
+}
+radio
+.frmm select:hover,.frmm input[type="date"]:hover,.frmm input[type="name"]:hover
+{
+color: #064d99;
+background: transparent;
+box-shadow: none;
+box-shadow:
+  -1px -1px 5px 0px #fff,
+  7px 7px 20px 0px #0003,
+  4px 4px 5px 0px #0002;
+}
+
+
+.frmm  .option {
+position: relative;
+
+cursor: pointer;
+}
+
+.btn {
+    background: linear-gradient(to right, #aeaeae, #aaaaaa);
+    color: #ffffff;
+    text-transform: capitalize;
+    font-size:20px;
+    font-weight: 400;
+    border-radius: .5rem;
+    cursor: pointer;
+    box-shadow: 0 .2rem 1rem rgba(0, 0, 0, 0.4);
+    display:flex;
+    justify-content:center;
+}
+
+.container .add{
+
+    max-width:800px;border-radius:10px;background-color:white; margin-top: 10px; padding-top: 10px;padding-bottom: px;
+}
+
+.container .add .prof{
+
+    color:linear-gradient(to right, #313131, grey);
+    
+    font-size:30px;
+}
+
+.frmm select{
+    font-weight:100;
+}
+
+.formm select:hover,.formm input[type="date"]:hover,.formm input[type="name"]:hover
+{
+    color: black;
+
+    box-shadow: none;
+    box-shadow:
+        -1px -1px 5px 0px #fff,
+        7px 7px 20px 0px #0003,
+        4px 4px 5px 0px #0002;
+}

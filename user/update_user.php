@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+  <title>Update User</title>
+    <link rel="shortcut icon" href="../../fevicon.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -14,72 +15,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+    <link href="../css/updateuser.css" rel="stylesheet" type="text/css">
 
 </head>
-<style>
-  body {
-    background-color: #eee;
-    font-family: 'Nunito', sans-serif;
-  }
-  .login {
-   
-    text-align: center;
-    text-transform: uppercase;
-    margin-top: 30px;
-    margin: 10px auto;
-    max-width: 690px;
-    padding: 30px 45px;
-    box-shadow: 5px 25px 35px #3535356b;
-    background-color: white;
-    border-radius: 40px;
-  }
-  .login h1 {
-    margin-top: px;
-    font-weight: bold;
-    font-size: 35px;
-    letter-spacing: 3px;
-  }
-  .login form {
-    max-width: 320px;
-    margin: 30px auto;
-  }
-  .login .btn {
-    border-radius: 50px;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 20px;
-    padding: 10px;
-    background-color: #00B72E;
-  }
-  .form-group input {
-    font-size: 20px;
-    font-weight: lighter;
-    border: none;
-    background-color: #F0F0F0;
-    color: #465347;
-    padding: 26px 30px;
-    border-radius: 50px;
-  }
-  .mainsize {
-    /* box-shadow: 5px 10px #888888;     ! boxshadow !*/
-    margin: 10px auto;
-    /* background: ; */
-    max-width: 590px;
-    padding: 30px 45px;
-    box-shadow: 5px 25px 35px #3535356b;
-    background-color: white;
-    border-radius: 10px;
-  }
-  
-input[type="radio"] {
-    background: #fff;
-    transition: 300ms ease-in-out 0s;
-    cursor: pointer;
-}
-
-
-</style>
+<body>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-lg-8">
@@ -89,7 +28,7 @@ input[type="radio"] {
           <div class="form-group">
             <input type="text" class="form-control " id="user" name="username" placeholder="Username">
           </div>
-          <button type="submit" class="btn btn-lg btn-block btn-success ">UPDATE</button>
+          <button type="submit" class="btn btn-lg btn-block  ">UPDATE</button>
       </div>
     </div>
   </div>
@@ -110,16 +49,18 @@ if (isset($_POST['admin'])) {
   $username = $_SESSION['username'];
   $s = "UPDATE login set type='$type',status='$admin' WHERE username='$username'";
   $qu = $conn->query($s);
+  //echo mysqli_num_rows($qu) . "row selected";
+ // echo $username;
 } else {
 
   if (isset($_POST['username'])) {
     $username = $_POST['username'];
     $_SESSION['username'] = $username;
-   // echo $username;
-    $sql = "SELECT l.p_id,l.type,l.status,p.name,dd.name as department  FROM login as l JOIN professor as p ON l.p_id=p.p_id JOIN p_department as d ON p.p_id=d.p_id JOIN department as dd ON d.d_id=dd.d_id WHERE l.username='$username'";
+
+    $sql = "SELECT l.p_id,l.type,l.status,p.name,d.name as department  FROM login as l JOIN professor as p ON l.p_id=p.p_id JOIN department as d ON p.d_id=d.d_id WHERE l.username='$username'";
     $q = $conn->query($sql);
     $count = mysqli_num_rows($q);
-  
+ //  echo $count;
     if ($count) {
       $userdata = mysqli_fetch_array($q);
       $p_id = $userdata['p_id'];
@@ -132,7 +73,7 @@ if (isset($_POST['admin'])) {
       ?>
       <form action="index.html" method="post">
 <hr>
-        <h1 class="row justify-content-center">User Details</h1>
+        <h1 style="color:white;font-weight: 500;" class="row justify-content-center">User Details</h1>
 
 
       </form>
@@ -226,7 +167,8 @@ if (isset($_POST['admin'])) {
           ?>
           <hr class="mx-n3">
 
-          <button type="submit" class="btn btn-lg btn-block btn-primary ">Submit</button>
+          <button style="    background: linear-gradient(to right, #aeaeae, #aaaaaa);
+" type="submit" class="btn btn-lg btn-block ">Submit</button>
 
         </form>
         <?php

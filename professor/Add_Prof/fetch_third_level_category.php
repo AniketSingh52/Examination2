@@ -2,7 +2,7 @@
 
 //fetch_third_level_category.php
 
-include('../connect.php');
+include('../../connect.php');
 
 if(isset($_POST["selected"]))
 {
@@ -21,8 +21,4 @@ if(isset($_POST["selected"]))
  }
  echo $output;
 }
-
-
-
-
 ?>

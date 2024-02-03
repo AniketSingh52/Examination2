@@ -3,7 +3,7 @@
 include('../connect.php');
 
 //If DATE and TIME Are Send(Set)
-if(isset($_POST['course_date']) && !empty($_POST['f_time'])&& !empty($_POST['to_time'])){
+if(isset($_POST['course_date']) && !empty($_POST['f_time'])&& !empty($_POST['to_time'])&& !empty($_POST['nob'])){
     $year=$_POST["year"];
     $prog=$_POST["programee1"];
     #$sem=$_POST["semester1"];
@@ -11,15 +11,16 @@ if(isset($_POST['course_date']) && !empty($_POST['f_time'])&& !empty($_POST['to_
     $date=$_POST["course_date"];
     $f_time=$_POST["f_time"];
     $t_time=$_POST["to_time"];
+    $nob=$_POST["nob"];
 
     //Checking Old Record Exist
     foreach($date as $c_id=>$date1){
         $sql="select*from timetable where pr_id='$prog' AND c_id='$c_id' AND e_id='$e_id' AND academic_year='$year'";
         $result=$conn->query($sql);
 
-        //If Exist Update
+         //If Exist Update
         if($result->num_rows>0){
-         // echo"yes";
+          //echo"Old record yes";
           if(array_key_exists($c_id,$f_time)){
             $time=$f_time[$c_id];
             #echo $time;
@@ -28,29 +29,33 @@ if(isset($_POST['course_date']) && !empty($_POST['f_time'])&& !empty($_POST['to_
             $time1=$t_time[$c_id];
             #echo $time1;
            }
-          $update="update timetable SET date='$date1',f_time='$time',t_time='$time1' where pr_id='$prog' AND c_id='$c_id' AND e_id='$e_id' AND academic_year='$year'";
+           if(array_key_exists($c_id,$nob)){
+            $nob1=$nob[$c_id];
+            #echo $nob1;
+           }
+          $update="update timetable SET date='$date1',f_time='$time',t_time='$time1',nob='$nob1' where pr_id='$prog' AND c_id='$c_id' AND e_id='$e_id' AND academic_year='$year'";
           if($conn->query($update) ===TRUE){
             echo "
-             <script>
-             alert('Record Updated Sucessfully');
-             </script>
-              ";
-             echo'<META HTTP-EQUIV="Refresh" Content="0.5;URL=index2.php">';
+            <script>
+            alert('Record Updated Sucessfully');
+            </script>
+             ";
+            echo'<META HTTP-EQUIV="Refresh" Content="0.5;URL=index2.php">';
           }
           else{
             echo "
-             <script>
-             alert('ERROR! Updating Record');
-             </script>
-              ";
-             echo'<META HTTP-EQUIV="Refresh" Content="0.5;URL=index2.php">';
-            //echo "Error Updating Record".$conn->error;
+            <script>
+            alert('ERROR! Updating Record');
+            </script>
+             ";
+            echo'<META HTTP-EQUIV="Refresh" Content="0.5;URL=index2.php">';
+           //echo "Error Updating Record".$conn->error;
            }
         }
 
-         //If Does'nt Exist Insert
+        //If Does'nt Exist Insert
         else{
-           // echo"No";
+            //echo"New Record Yes";
             if(array_key_exists($c_id,$f_time)){
                 $time=$f_time[$c_id];
                 #echo $time;
@@ -59,15 +64,18 @@ if(isset($_POST['course_date']) && !empty($_POST['f_time'])&& !empty($_POST['to_
                 $time1=$t_time[$c_id];
                 #echo $time1;
             }
-            $nob=0;
-            $sql1="insert into timetable(pr_id,c_id,e_id,date,f_time,t_time,nob,academic_year) values('$prog','$c_id','$e_id','$date1','$time','$time1','$nob','$year')";
+            if(array_key_exists($c_id,$nob)){
+              $nob1=$nob[$c_id];
+              #echo $nob1;
+             }
+            $sql1="insert into timetable(pr_id,c_id,e_id,date,f_time,t_time,nob,academic_year) values('$prog','$c_id','$e_id','$date1','$time','$time1','$nob1','$year')";
             if($conn->query($sql1) ===TRUE){
-                echo "
-                <script>
-                alert('New Record Inserted Sucessfully');
-                </script>
-                 ";
-                 echo'<META HTTP-EQUIV="Refresh" Content="0.5;URL=index2.php">';
+              echo "
+              <script>
+              alert('New Record Inserted Sucessfully');
+              </script>
+               ";
+               echo'<META HTTP-EQUIV="Refresh" Content="0.5;URL=index2.php">';
                }
                else{
                 echo "
@@ -84,7 +92,6 @@ if(isset($_POST['course_date']) && !empty($_POST['f_time'])&& !empty($_POST['to_
 
 }
 
-//If DATE And TIME Is'nt SET
 else{
     echo "
     <script>
@@ -94,3 +101,4 @@ document.location.href='index2.php';
     ";
 
 }
+?>

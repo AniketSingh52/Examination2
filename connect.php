@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "examination";
+$database = "examinationn";
 //$table="llogin";
 
 // Create a connection

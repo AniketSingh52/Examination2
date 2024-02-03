@@ -1,16 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelkar Examination</title>
-    <link rel="shortcut icon" href="fevicon.png">
+    <title>manageprofessor info</title>
+    <link rel="shortcut icon" href="http://vazecollege.net/wp-content/uploads/2016/07/fevicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-       
-      <pages enableSessionState="true" /> 
- 
+
 </head>
 <!--  -->
 <body>
@@ -19,7 +18,7 @@
     ?>
     <style>
         body {
-            background-color:white;
+            background-color: whitesmoke;
         }
 
         .login {
@@ -47,16 +46,12 @@ style="   background-image: url('https://mdbootstrap.com/img/new/fluid/nature/01
        height: 100vh"> -->
        <?php 
                                 require "connect.php";
-                               
-                             error_reporting(0);
-                             $uname=$_SESSION['username'];
 
                                 $query=mysqli_query($conn,"SELECT * FROM `login` WHERE username='".$_SESSION['username']."'");
                                 while($row=mysqli_fetch_array($query))
                                 {
                                     $ecm=$row['type'];
                                 }
-                             
                                 if($ecm=='A')
                                 {
                                     ?>

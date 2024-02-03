@@ -7,7 +7,9 @@ include('../connect.php');
 <head>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Feed Timetable</title>
+	<title>Timetable</title>
+    <link rel="shortcut icon" href="../fevicon.png">
+	<link rel="stylesheet" href="../css/indexmain.css" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -60,15 +62,15 @@ $("#Show").on("click",function(){
   });
 
 
-  //For Checkbox Toggle Function
-function toggle(checkbox,inputfield,ftime,ttime){
+ //For Checkbox Toggle Function
+ function toggle(checkbox,inputfield,ftime,ttime,nob){
 inputfield.disabled=!checkbox.checked;
 ftime.disabled=!checkbox.checked;
 ttime.disabled=!checkbox.checked;
+nob.disabled=!checkbox.checked;
 //input.disabled=!true(false) 
 //input.disabled=!false(true)
   }
-
   function toggleSelectAll(checkbox) {
             var dateInputs = document.querySelectorAll('.form-control.date-input');
             for (var i = 0; i < dateInputs.length; i++) {
@@ -85,14 +87,29 @@ ttime.disabled=!checkbox.checked;
 </script>
 
 <body>
-	<div class="container">
-		<h3>Feed Timetable</h3>
-    <br />
+<div style="margin-top:80px;background-color:white;border-radius:10px;padding:5px;max-width:800px;" class="container">
+		<h3 style="font-size:30px;font-weight:bold;color:gray;text-align:center;">Feed Timetable</h3>
+		  <!-- ACADEMIC YEAR BLOCK -->
+		   <div>
+        <h3>
+          <label style="margin-top:10px;display:flex;justify-content:center;" class="d-flex justify-content-center" for="drop1">Academic Year:-
+        
+              <?php echo date("Y") . '-' . (date("y") + 1);  ?>
+            </label>
+        </h3>
+      </div>
+	</div>
+
+
+	<div class="formm">
+		<div class="sizeform">
 		<form action="insert(feed).php" method="post">
 			<div class="col-auto">
 
 			<!-- Acedemic Year dropdown -->
-				<label for="yera">Acedemic Year</label>
+			<div >
+				<label for="yera">Acedemic Year:-</label>
+				</div>
 				<select class="form-control" id="year" name="year">
 					<option value="" selected disabled>Select Year</option>
 					<?php
@@ -103,7 +120,7 @@ ttime.disabled=!checkbox.checked;
 				</select>
 		<br/>
 				<!-- Programme dropdown -->
-				<label for="programee">Programme</label>
+				<label for="programee">Programme:-</label>
 				<select class="form-control" id="programee" name="programee1" require>
 					<option value="" selected disabled>Select Programme</option>
 					<?php
@@ -121,14 +138,14 @@ ttime.disabled=!checkbox.checked;
         <br />
 
 				<!-- Semester dropdown -->
-				<label for="semester">Semester</label>
+				<label for="semester">Semester:-</label>
 				<select class="form-control" id="semester" name="semester1" require>
 					<option value="" selected disabled>Select Semester</option>
 				</select>
 		<br/>
 
 		<!-- Exam type dropdown -->
-				<label for="examtype">Exam Type</label>
+				<label for="examtype">Exam Type:-</label>
 				<select class="form-control" id="examtype" name="examtype1">
 					<option value="" selected disabled>Select Type</option>
 					<?php
@@ -155,10 +172,14 @@ ttime.disabled=!checkbox.checked;
 		
 
 		<!-- Show button-->
-		        <input type="button" value="Show" id="Show" name="Show" class="btn btn-primary">
-				
+			<div style="display:flex;justify-content:center;">
+
+				<div style="" class="d-grid gap-2 submit">
+				<input type="button" class="btn mt-3"  value="Show" id="Show" name="Show">
+          
+              </div></div>	
         <!-- Select All Checkbox-->
-		<div class="row" style="display:none;" id="selectall">
+		<div class=" row" style="display:none;" id="selectall">
 			<div class="col-md-12 text-right">
 			<label class="mr-3">Select All:</label>
 				<input type="checkbox" onchange="toggleSelectAll(this)">
@@ -171,9 +192,14 @@ ttime.disabled=!checkbox.checked;
 
 				</div>
 		<!-- Submit button-->
-				<input type="submit" value="Submit" name="Submit" id="Submit" class="btn btn-primary" style="display:none;">
-				</div>
+		<div style="display:flex;justify-content:center;">
+
+				<div style="" class="d-grid gap-2 submit">
+				<input type="submit" value="Submit" name="Submit" id="Submit" class="btn mt-3"  style="display:none;">
+
+    </div></div>	
+				</div></div>
 		</form>
-	</div>
+		</div>
 </body>
 </html>
