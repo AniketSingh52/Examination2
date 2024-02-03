@@ -55,9 +55,11 @@
             <label for="drop2">Exam type :-</label>
             <select name="exam" class="form-select" aria-label="Default select example" id="exam">
                 <option disabled selected>Select Exam type </option>
-                <option value="1">Class test </option>
-                <option value="2">Regular </option>
-                <option value="3">ATKT</option>
+                <option value="1">Internal examination 1</option>
+                <option value="2">Final Examination 1</option>
+                <option value="4">Internal examination 2</option>
+                <option value="5">Final Examination 2</option>
+                <option value="3">ATKT Examination</option>
             </select>
         </div>
         <div class="div">
