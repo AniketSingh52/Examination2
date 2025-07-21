@@ -87,4 +87,10 @@ vendor/bin/phpunit
 
 ---
 
+
+## 📃 License
+
+This project is for educational and institutional use only.
+
+
 [🔙 Return](#table-of-contents)
